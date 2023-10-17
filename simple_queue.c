@@ -36,6 +36,8 @@ int first_Delete()
     }
 }
 
+
+
 int display()
 {
     if(f < 0)

@@ -7,7 +7,9 @@ void print(int a[])
    int i;
    printf("\n");
    for(i=0; i<n; i++)
-     printf("%d ",a[i]);
+    {
+      printf("%d ",a[i]);
+    }
 }
 
 void Quicksort(int a[],int first, int last)
@@ -24,10 +26,13 @@ void Quicksort(int a[],int first, int last)
         while (i<j)
         {
             while (a[i]<=a[pivot] && i<last)
-            i++;
+            {
+                i++;
+            }    
             while (a[j] > a[pivot])
-            j--;
-
+            {
+                j--;
+            }
             if(i<j)
             {
                 temp = a[i];
@@ -51,6 +56,7 @@ int main()
 
     printf("How Many Element Enter:");
     scanf("%d",&n);
+    
     for(i= 0; i<n; i++)
      a[i] = rand() % 100+1;
 

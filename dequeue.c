@@ -118,9 +118,11 @@ int main()
 
       case 4:
       delete_Last();
+      break;
       
       case 5:
       display();
+      break;
       
       case 6:
       printf("\nExit From Program");

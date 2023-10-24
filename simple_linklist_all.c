@@ -54,6 +54,61 @@ while (ptr->next != NULL)
   return;
 }
 
+
+void insertfirst(int val)
+{   
+    struct  node *ptr = head;
+    struct node *temp = malloc(sizeof(struct node));
+    temp->data =val;
+
+    if(head == NULL)
+    {
+        head = temp;
+        return;
+    }
+    temp->next = ptr;
+    head = temp;
+    return;
+}
+
+void deletefirst()
+{
+    struct node *ptr = head;
+    if(head == NULL)
+    {
+        printf("LIst is Allready Empty")
+    }
+    else if(head->next = NULL)
+    {
+        head = NULL;
+        free(ptr);
+        return;
+    }
+    head = ptr->next;
+    free(ptr);
+    return;
+}
+
+void insert_mid(int val,int pos)
+{ 
+    struct  node *ptr = head;
+    struct node *temp = malloc(sizeof(struct node));
+    temp->data = val;
+
+    while(ptr->data != pos)
+    {
+        ptr = ptr->next;
+    }
+    temp->next = ptr->next;
+    ptr->next = temp;
+    return;
+}
+
+void delete_mid()
+{
+    
+} 
+
 void Display()
 {
     struct node *ptr = head;
@@ -72,50 +127,9 @@ void Display()
     printf("\n");
 }
 
-
 int main()
 {
-    int choice;
-    int data;
-
-    printf("\nPress 1 For -->InserEnd");
-    printf("\nPress 2 For -->DeleteEnd");
-    printf("\nPress 3 For -->Display");
-    printf("\nPress 0 For -->Exit Program");
-
-    do
-    {
-        printf("\nEnter Your Choice:");
-        scanf("%d",&choice);
-
-        switch (choice)
-        {
-
-            case 1:
-            printf("Enter Your Data:");
-            scanf("%d",&data);
-            insertEnd(data);
-            break;
-
-            case 2:
-            deleteEnd();
-            break;
-
-            case 3:
-            Display();
-            break;
-
-            case 4:
-            printf("Exitb From Program");
-            break;
-
-            default:
-            printf("Enter Invalice Choice");
-            break;
-        }    
-        
-    } while (choice != 0);
-    
-
-
+    insertfirst(10);
+    insertfirst(20);
+    Display();
 }

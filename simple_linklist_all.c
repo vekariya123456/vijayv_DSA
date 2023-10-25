@@ -37,6 +37,7 @@ void deleteEnd()
     if(head == NULL)
     {
         printf("List is Allready Empty..");
+        return;
     }
     else if(head->next == NULL)
     {
@@ -63,6 +64,7 @@ void insertfirst(int val)
 
     if(head == NULL)
     {
+        temp->next = NULL;
         head = temp;
         return;
     }
@@ -76,9 +78,10 @@ void deletefirst()
     struct node *ptr = head;
     if(head == NULL)
     {
-        printf("LIst is Allready Empty")
+        printf("List is Allready Empty...");
+        return;
     }
-    else if(head->next = NULL)
+    else if(head->next == NULL)
     {
         head = NULL;
         free(ptr);
@@ -104,9 +107,19 @@ void insert_mid(int val,int pos)
     return;
 }
 
-void delete_mid()
+void delete_mid(int pos)
 {
-    
+    struct node *ptr =head;
+    struct  node *prev;
+
+    while(ptr->data != pos)
+    {
+        prev = ptr;
+        ptr = ptr->next;
+    }
+    prev->next = ptr->next;
+    free(ptr);
+    return; 
 } 
 
 void Display()
@@ -129,7 +142,24 @@ void Display()
 
 int main()
 {
-    insertfirst(10);
-    insertfirst(20);
+    
+    insertEnd(10);
+    insertEnd(20);
+    insertEnd(30);
+    insertEnd(40);
+    insertfirst(50);
+    insertfirst(60);
+    Display();
+    insert_mid(80,30);
+    insert_mid(105,20);
+    Display();
+    deleteEnd();
+    delete_mid(20);
+    Display();
+    insertfirst(45);
+    Display();
+    deletefirst();
+    Display();
+    deletefirst();
     Display();
 }

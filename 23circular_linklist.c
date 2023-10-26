@@ -77,7 +77,7 @@ void deleteEnd()
         return;
     }
     
-while (ptr->next != NULL)
+while (ptr->next != head)
   {
      prev = ptr;
      ptr =ptr->next;
@@ -146,11 +146,12 @@ int main()
    insertEnd(30);
    insertEnd(40);
    Display();
-   deletefirst(50);
-   deletefirst(60);
+   deletefirst();
    Display();
    insert_mid(80,30);
    Display();
    delete_mid(80);
+   Display();
+   deleteEnd();
    Display();
 }

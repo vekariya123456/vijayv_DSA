@@ -5,6 +5,8 @@ struct node
 {
     int data;
     struct node *next;
+    struct  node *prev;
+
 };
 
 struct  node *head =NULL;
@@ -15,6 +17,7 @@ void insertEnd(int val)
     struct node *temp = malloc(sizeof(struct node));
     temp->data = val;
     temp->next = NULL;
+    temp->prev = NULL;
 
     if(head == NULL)
     {
@@ -26,13 +29,14 @@ void insertEnd(int val)
         ptr = ptr->next;
     }
     ptr->next = temp;
+    temp->prev = ptr;
     return;
 }
 
 void deleteEnd()
 {
     struct  node *ptr = head;
-    struct node *prev;
+    struct node *p;
 
     if(head == NULL)
     {
@@ -47,14 +51,13 @@ void deleteEnd()
     }
 while (ptr->next != NULL)
   {
-     prev = ptr;
+     p = ptr;
      ptr =ptr->next;
   }
-  prev->next = NULL;
+  p->next = NULL;
   free(ptr);
   return;
 }
-
 
 void insertfirst(int val)
 {   
@@ -65,10 +68,13 @@ void insertfirst(int val)
     if(head == NULL)
     {
         temp->next = NULL;
+        temp->prev = NULL;
         head = temp;
         return;
     }
     temp->next = ptr;
+    temp->prev = NULL;
+    ptr->prev = temp;
     head = temp;
     return;
 }
@@ -88,6 +94,7 @@ void deletefirst()
         return;
     }
     head = ptr->next;
+    head->prev = NULL;
     free(ptr);
     return;
 }
@@ -103,6 +110,8 @@ void insert_mid(int val,int pos)
         ptr = ptr->next;
     }
     temp->next = ptr->next;
+    temp->prev = ptr;
+    ptr->next->prev = temp;
     ptr->next = temp;
     return;
 }
@@ -117,10 +126,14 @@ void delete_mid(int pos)
         prev = ptr;
         ptr = ptr->next;
     }
-    prev->next = ptr->next;
+    ptr->prev->next = ptr->next;
+    ptr->next->prev = ptr->prev;
     free(ptr);
     return; 
 } 
+
+
+
 
 void Display()
 {
@@ -142,24 +155,19 @@ void Display()
 
 int main()
 {
-    
     insertEnd(10);
     insertEnd(20);
     insertEnd(30);
     insertEnd(40);
-    insertfirst(50);
-    insertfirst(60);
-    Display();
-    insert_mid(80,30);
-    insert_mid(105,20);
     Display();
     deleteEnd();
+    Display();
+    insertfirst(80);
+    Display();
+    deletefirst();
+    Display();
+    insert_mid(100,20);
+    Display();
     delete_mid(20);
-    Display();
-    insertfirst(45);
-    Display();
-    deletefirst();
-    Display();
-    deletefirst();
     Display();
 }

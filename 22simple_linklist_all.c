@@ -143,9 +143,9 @@ void Display()
 int main()
 {
     
-   int choice, value, position;
+   int choice=0, value, position;
    
-   while(1)
+   do
    {
        printf("***************************************************\n");
        printf("||=================|| MENU ||======================\n");
@@ -206,15 +206,16 @@ int main()
            break;
            
            case 8:
-           exit(0);
+           break;
            
            default:
            printf("invalid Choice\n");
+           break;
            
         }
        
     }
-    return 0;
+    while(choice != 0);
 }
 
 
